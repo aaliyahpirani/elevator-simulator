@@ -1,5 +1,7 @@
- class Elevator {
-    private int currentFloor;
+import Math;
+
+class Elevator {
+    private static int currentFloor;
     private boolean DoorsOpen;
     private int TotalFloors;
     private List<int> floorRequests;
@@ -10,7 +12,7 @@
             throw new IllegalArgumentException("Floor exceeds total floors");
         }
         else floorRequests.add(Floor);
-        / REMOVE LATER
+        // REMOVE LATER
         System.out.println("Floor " + Floor + " added to requests.");
     }
 
@@ -24,7 +26,7 @@
         }
         else {
             currentFloor = Floor;
-            / REMOVE LATER
+            // REMOVE LATER
             System.out.println("Current floor set to " + Floor);
         }
     }
@@ -37,13 +39,38 @@
 
     public void openDoors() {
         DoorsOpen = true;
-        / REMOVE LATER
+        // REMOVE LATER
         System.out.println("Doors are now open.");
     }
 
     public void closeDoors() {
         DoorsOpen = false;
-        / REMOVE LATER
+        // REMOVE LATER
         System.out.println("Doors are now closed.");
+    }
+
+    public void removeFloorRequest(int floor) {
+        if floorRequests.contains(floor) {
+            floorRequests.remove(Integer.valueOf(floor));
+            //REMOVE LATER
+            System.out.println("Floor " + floor + " removed from requests.");
+        }
+        else {
+            throw new IllegalArgumentException("Floor not in requests");
+
+        }
+    }
+
+    public void moveToNextRequestedFloor(int newFloor) {
+        System.out.println("Moving from floor " + currentFloor + " to floor " + newFloor);
+
+        Thread.sleep(Math.abs(newFloor - currentFloor) * 1000 + 3000);
+
+        setCurrentFloor(newFloor);
+
+        System.out.println("Arrived at floor " + newFloor);
+
+        removeFloorRequest(newFloor);
+
     }
  }
