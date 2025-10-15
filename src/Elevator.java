@@ -7,6 +7,14 @@ class Elevator {
     private List<int> floorRequests;
     public String BuildingName;
 
+    public Elevator (String BuildingName, int TotalFloors) {
+        this.BuildingName = BuildingName;
+        this.TotalFloors = TotalFloors;
+        this.currentFloor = 0;
+        DoorsOpen = false;
+        floorRequests = new ArrayList<int>();
+    }
+
     public void addFloorRequest(int Floor) {
         if (Floor > TotalFloors || Floor < 0) {
             throw new IllegalArgumentException("Floor exceeds total floors");

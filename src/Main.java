@@ -1,5 +1,8 @@
-public class main {
-    public static void main(String[] args) {
+import java.util.Scanner;
+
+
+public class Main {
+    public static void Main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of floors in the building:");
         int numFloors = scanner.nextInt();
@@ -16,13 +19,7 @@ public class main {
             System.out.println("Enter the floor you want to go to:");
             int requestedFloor = scanner.nextInt();
 
-            if (requestedFloor == "q") {
-             running = false;
-            }
-
-            else {
-                moveToNextRequestedFloor( int requestedFloor, Building building,int elevatorNum);
-            }
+            moveToNextRequestedFloor(requestedFloor, building, elevatorNum);
             // Needs implementation but building needs to be implemented first to initialize
             // elevators and floors in buidling contructor
 
